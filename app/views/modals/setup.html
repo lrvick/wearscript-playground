@@ -1,8 +1,36 @@
 <div class="modal-container">
   <div class="modal-header text-center">
-      <h3>Device Setup</h3>
+      <h2>Device Setup and Settings</h2>
   </div>
   <div class="modal-body">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h3>Playground Settings</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-3">
+        <form class="form-inline">
+          <div class="form-group">
+            <label>
+              <input type="checkbox" data-ng-model="settings.vimMode" data-ng-change="changeVimMode()" /> Vim Mode
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" data-ng-model="settings.debugMode" data-ng-change="changeDebugMode()" /> Debug Mode
+            </label>
+          </div>
+          <!--
+          <div class="form-group">
+            <label>
+              <input type="checkbox" data-ng-model="pullFromLocalStorage" /> Local Scripts
+            </label>
+          </div>
+          -->
+        </form>
+      </div>
+    </div>
     <div class="row">
       <div class="col-xs-12 text-center">
         <h3>Auth with Google and Github
@@ -31,7 +59,7 @@
         <p>Run in WearScript then scan the QR code.</p>
 
         <p>
-        <qr 
+        <qr
         style="display:block;border:10px white solid;background:white;"
         type-number="0" correction-level="'M'" size="500"  text="wsurl"></qr>
         </p>
@@ -40,7 +68,6 @@
           Otherwise, copy + paste the command below into a terminal
         </p>
         <pre>{{adb}}</pre>
-        
         <p>
           Client Endpoint URL:
         </p>

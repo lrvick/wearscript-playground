@@ -30,7 +30,7 @@ angular.module('wearscriptPlaygroundApp')
       service.file = $routeParams.file || 'glass.html';
 
       //service.editor.setReadOnly(false);
-      if ( Profile.get("vim_mode") ){
+      if ( Profile.vimMode ){
         service.editor.setKeyboardHandler("ace/keyboard/vim");
       }
 

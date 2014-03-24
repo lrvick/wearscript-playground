@@ -35,7 +35,7 @@
   </head>
   <body
     data-ng-class="{'menu-open': profile.menu }"
-    data-ng-cloak 
+    data-ng-cloak
     ng-intro-options="IntroOptions"
     ng-intro-method="CallMe"
     ng-intro-oncomplete="onCompletedEvent"
@@ -126,7 +126,7 @@
                href="#/logging"
                id="logging-tab">Logging</a>
           </li>
-          <li data-ng-show="profile.debug_mode">
+          <li data-ng-show="profile.debugMode">
             <a data-hm-tap='active=channels'
                data-ng-class="{'active': active==debug}"
                href="#/debug"
@@ -168,7 +168,7 @@
       </nav>
     </aside>
     <div id="main-view" class="container-fluid tab-view" ng-view=""> </div>
-    
+
 
 
     <!-- build:js scripts/vendor.js -->
