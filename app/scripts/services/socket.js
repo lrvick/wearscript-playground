@@ -3,7 +3,7 @@
 angular.module('wearscriptPlaygroundApp')
 
   .factory( 'Socket', function($log,$window, Profile, $rootScope, Logging){
-    
+
     var service = {
       ws: {},
       deviceCount: 0,
@@ -11,7 +11,7 @@ angular.module('wearscriptPlaygroundApp')
       devices: [
         //{ name:"myo", connected:false},
         //{ name:"pebble", connected:false},
-        //{ name:"phone", connected:false},
+        { name:"phone", connected:false},
         { name:"glass", connected:false}
       ]
     }
@@ -41,7 +41,7 @@ angular.module('wearscriptPlaygroundApp')
         $window.open(url);
       }
       function subscription_cb(foo){
-        
+
         $rootScope.$broadcast('subscription')
         if (service.ws.exists('glass')){
           $log.info('** Socket','Glass Connected');
@@ -54,7 +54,18 @@ angular.module('wearscriptPlaygroundApp')
           $log.warn('!! Socket','Glass Disconnected');
           angular.forEach(service.devices, function(k){
             if(k.name == "glass") k.connected = false;
-            
+
+          })
+        }
+        if(service.ws.exists('phone')){
+          $log.info('** Socket', 'Phone Connected')
+          angular.forEach(service.devices, function(k){
+            if(k.name == "phone") k.connected = true;
+          })
+        } else {
+          $log.info('!! Socket', 'Phone Disconnected')
+          angular.forEach(service.devices, function(k){
+            if(k.name == "phone") k.connected = false;
           })
         }
         service.counter();
@@ -71,7 +82,7 @@ angular.module('wearscriptPlaygroundApp')
       service.socket = new ReconnectingWebSocket(url)
       service.socket.onclose = function(){
         service.connected = false;
-        
+
         $log.error('!! Socket','Server Disconnected');
       }
 
