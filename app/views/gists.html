@@ -13,7 +13,7 @@
   </thead>
   <tbody>
     <tr data-ng-repeat="gist in gists">
-      <td><a href="{{gist.url_playground}}" ng-bind="gist.description"></td>
+      <td><a href="{{gist.url_playground}}" ng-bind="gist.description.replace('[wearscript]','')"></td>
       <td data-ng-bind="gist.updated_at | date:'medium'"></td>
       <td><a href="{{gist.url_playground}}">Edit</a></td>
       <td><a data-ng-click="wear(gist)">Wear</a></td>
